@@ -6,6 +6,7 @@ from time import strftime
 setlocale(LC_ALL, 'es_CO.utf8')
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/registros.db'
 db = SQLAlchemy(app)
 
