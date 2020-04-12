@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Registro de Actividad</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+
+</head>
+
+<body class="bg-dark">
+
+<main class="container p-4">
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="text-info text-center p-4">Registro de Actividad</h1>
+        </div>
+        <div class="col-md-5">
+            <form action="/create/{{ id }}" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="observaciones" placeholder="Actividad" autofocus>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row p-4">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped table-light table-hover">
+                <thead class="text-center bg-info">
+
+                <th>Hora & Fecha</th>
+                <th>Actividad & Observaciones</th>
+                <th>Borrar</th>
+
+                </thead>
+
+                <tbody>
+                {% for actividad in actividades %}
+
+                <tr>
+                    <td>{{ actividad.fecha }}</td>
+                    <td>{{ actividad.observaciones}}</td>
+                    <td>
+                        <a href="{{ url_for('delete', id=id, identificador=actividad.id) }}"
+                           class="btn btn-danger btn-block">
+                            <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+                                <path fill-rule="evenodd"
+                                      d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button id="btn-comprimir" class="btn btn-primary btn-lg rounded-circle">&#9754;</button>
+
+    <footer>
+        <iframe class="fixed-bottom" src="{{ estaciones[id].url }}" frameborder="no"></iframe>
+        <div class="fixed-bottom col-md-3 btn-group">
+            <div class="col p-3">
+                <a class="btn btn-dark" href="{{ url_for('change', id=id-1) }}">Anterior</a>
+                <a class="btn btn-dark ml-1" href="{{ url_for('change', id=id+1) }}">Siguiente</a>
+            </div>
+        </div>
+    </footer>
+</main>
+
+</body>
+
+</html>
