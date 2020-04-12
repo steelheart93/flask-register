@@ -10,6 +10,10 @@
 }
 
 iframe {
-    width: 100%;
+    width: 0%;
     height: 100px;
+}
+
+footer a {
+    visibility: hidden;
 }

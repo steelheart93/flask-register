@@ -25,7 +25,8 @@ class Estacion(db.Model):
 @app.route('/create/<id>', methods=['POST'])
 def create(id):
     fecha = strftime("%I:%M:%S %p, %A (%d %B %Y)")
-    nueva_actividad = Actividad(fecha=fecha, observaciones=request.form['observaciones'])
+    nueva_actividad = Actividad(
+        fecha=fecha, observaciones=request.form['observaciones'])
     db.session.add(nueva_actividad)
     db.session.commit()
     return redirect(url_for('read', id=id))
