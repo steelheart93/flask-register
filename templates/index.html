@@ -73,9 +73,9 @@
         <footer>
             <iframe class="fixed-bottom" src="{{ estaciones[id].url }}" frameborder="no"></iframe>
             <div class="fixed-bottom col-md-3 btn-group">
-                <div class="col p-3">
-                    <a class="btn btn-dark" href="{{ url_for('change', id=id-1) }}">Anterior</a>
-                    <a class="btn btn-dark ml-1" href="{{ url_for('change', id=id+1) }}">Siguiente</a>
+                <div class="col p-2">
+                    <a class="btn btn-dark btn-sm" href="{{ url_for('change', id=id-1) }}">Anterior</a>
+                    <a class="btn btn-dark btn-sm ml-1" href="{{ url_for('change', id=id+1) }}">Siguiente</a>
                 </div>
             </div>
         </footer>
