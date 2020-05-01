@@ -39,7 +39,7 @@ def home():
 
 @app.route('/<id>')
 def read(id):
-    actividades = Actividad.query.all()
+    actividades = Actividad.query.order_by(Actividad.id.desc()).all()
     estaciones = Estacion.query.all()
     return render_template('index.html', actividades=actividades, estaciones=estaciones, id=int(id))
 
